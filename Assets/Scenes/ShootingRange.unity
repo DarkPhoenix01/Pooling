@@ -521,7 +521,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gun: {fileID: 1695711993}
-  prefab: {fileID: 9114947038107413916, guid: ec4607f06d38d1f408bd7fe7dffe916e, type: 3}
+  prefab: {fileID: 0}
+  bulletType: 0
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -605,6 +606,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 17.9, y: -80.05, z: 0}
+--- !u!1 &1223435229
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1223435230}
+  m_Layer: 0
+  m_Name: PoolBullet
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1223435230
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223435229}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.89733505, y: 0, z: 4.2863646}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1593510862}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1352366001
 GameObject:
   m_ObjectHideFlags: 0
@@ -807,7 +838,7 @@ GameObject:
   - component: {fileID: 1593510862}
   - component: {fileID: 1593510861}
   m_Layer: 0
-  m_Name: Pool
+  m_Name: PoolManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -825,9 +856,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6547c2120a856547816da4207f8a579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 9114947038107413916, guid: ec4607f06d38d1f408bd7fe7dffe916e, type: 3}
-  amount: 20
-  pool: []
+  listOfPool:
+  - name: SimpleBullet
+    prefab: {fileID: 9114947038107413916, guid: ec4607f06d38d1f408bd7fe7dffe916e, type: 3}
+    amount: 20
+    parent: {fileID: 1223435230}
+    pool: []
+  - name: CanonBall
+    prefab: {fileID: 9114947038107413916, guid: f3cadde35461a4d47a90f00510c8f5c0, type: 3}
+    amount: 5
+    parent: {fileID: 1854409423}
+    pool: []
 --- !u!4 &1593510862
 Transform:
   m_ObjectHideFlags: 0
@@ -838,7 +877,9 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -36.225834, y: -20.040537, z: -9.298307}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1223435230}
+  - {fileID: 1854409423}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1062,3 +1103,33 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1779964363}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1854409422
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1854409423}
+  m_Layer: 0
+  m_Name: PoolCanon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1854409423
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1854409422}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1593510862}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
